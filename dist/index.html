@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="blocTime">
 <head lang="en">
     <meta charset="UTF-8">
     <title>Bloc Base Project</title>
     <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
+    <h1>Bloc Time</h1>
+    <ui-view></ui-view>
+<!--
+    <div ng-app="">
+        <p>Name: <input type="text" ng-model="name"></p>
+        <p>{{name}}</p>
+        <p>{{name | uppercase}} (uppercase filter)</p>
+        <p>2 + 2 = {{2+2}}</p>
+    </div>
+-->
+    <!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.js"></script>
     <script src="/scripts/app.js"></script>
+    <script src="/scripts/controllers/LandingCtrl.js"></script>
 </body>
 </html>
