@@ -1,0 +1,53 @@
+html {
+  height: 100%; /* makes sure our HTML takes up 100% of the browser window */
+}
+ 
+ body {
+   font-family: 'Open Sans';  sets our font to the "Open Sans" typeface 
+   color: black;             /* sets the text color to white */
+   min-height: 100%;         /* says the height of the body must be, at minimum, 100% of the window */
+   padding-bottom: 150px;
+ }
+ 
+
+ *, *:before, *:after {
+     -moz-box-sizing: border-box;
+     -webkit-box-sizing: border-box;
+     box-sizing: border-box;
+ }
+
+.container {
+   margin: 0 auto;
+   max-width: 64rem;
+ }
+
+
+.timer-digits {
+    font-size: 300%
+}
+
+.timer-button {
+    text-align: center;
+    font-size: 14px;
+    background-color: blue;
+    color: white;
+    border:1px solid #566963;
+    display: inline-block;
+    width: 100px;
+    height: 28px;
+ }
+
+ .timer-button:hover {
+    cursor: pointer;
+    color: red;
+ }
+
+ .time-field{
+   width: 85%;
+   font-size: 35px;
+ }
+
+ .center{
+   margin-top: 50px;
+   margin-left: 50%;
+ }
