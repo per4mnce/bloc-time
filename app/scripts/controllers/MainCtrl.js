@@ -28,7 +28,8 @@
             }  
         };
         
-        //Reset
+        // Stop othe timer and reset the button name
+        // Private function
         stopTimer = function() {
             $interval.cancel(stop);
             self.workButtonName = 'Start';
