@@ -12,13 +12,10 @@
         var self = this; // This allows the inner function to gain access to 'this'
 
         this.workButtonName = 'Start';  //Set the name op the work button
-        
     
-        
-        
         // Starts or resets the timer based on button text
         // Initiated by the user button click
-        //Private function
+        // Public function.  Called by button in main.html template
         this.startResetTimer = function() {
             if (self.workButtonName == 'Start' || self.workButtonName == 'Break' ){
                 startTimer();
