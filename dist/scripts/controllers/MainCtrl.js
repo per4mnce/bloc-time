@@ -2,34 +2,63 @@
     function MainCtrl($interval) {
         console.log('Starting MainCtrl');
 
-        var SESSION_TIME = 60; //1500 = 25 minutes
-        var breakTime = 300; //5 minutes
+        var SESSION_TIME = 5;         //Work session default time - 1500 (25 minutes)
+        var SHORT_SESSION_TIME = 300; //Short break session default time - 300 (5 minutes)
+        var LONG_SESSION_TIME = 1800; //Long break session default time - 1800 (30 minutes)
 
-        var stop;
-
+        var stop = undefined;
         this.time = SESSION_TIME;
-
-
-        this.buttonName = 'Start';
         
-        this.startTimer = function() {
-            console.log('this.startTimer:  ' + this.time);
-            this.time -= 1;
+        var self = this; // This allows the inner function to gain access to 'this'
+
+        this.workButtonName = 'Start';  //Set the name op the work button
+        
+    
+        
+        
+        // Starts or resets the timer based on button text
+        // Initiated by the user button click
+        //Private function
+        this.startResetTimer = function() {
+            if (self.workButtonName == 'Start' || self.workButtonName == 'Break' ){
+                startTimer();
+            }
+            else{
+                stopTimer();
+            }  
+        };
+        
+        //Reset
+        stopTimer = function() {
+            $interval.cancel(stop);
+            self.workButtonName = 'Start';
+            self.time = SESSION_TIME;
+        }
+        
+        // Start the countdown timer
+        // Private Function.
+        startTimer = function() {
+            console.log('self.startTimer:  ' + self.time);
+            self.workButtonName = 'Reset';
                 
             stop = $interval(function() {
-                console.log('$interval function started:  ' + this.time);
-                if (this.time > 0 ){
-                    console.log('this.time > 0');
-                    this.time -= 1;
+                console.log('$interval function started:  ' + self.time);
+                if (self.time > 0 ) {
+                    console.log('self.time > 0');
+                    self.time -= 1;
                 }
-                else{
+                else {
                     $interval.cancel(stop);
                     stop = undefined;
-                    console.log('$interval function stopped: ' + this.time)
+                    console.log('$interval function stopped: ' + self.time)
                 }
             }, 1000);
-        }
-    }
+        };
+        
+        
+        
+    
+    } //End of MainCtrl
     
     angular
         .module('blocTime')

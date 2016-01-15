@@ -1,9 +1,5 @@
 <div class="container center">
     <div class="time-field timer-digits"> {{ main.time }}</div>
-<!--
-    <button type="button" ng-click="main.test()" class="timer-button">{{ main.workButtonText }}</button>
-    <button type="button" class="timer-button">{{ main.breakButtonText }}</button>
--->
-    <span class="timer-button" ng-click="main.startTimer()">{{ main.buttonName }}</span> <br>
-    <span class="timer-button" ng-click="main.startTimer()">{{ main.buttonName }}</span> <br>
+    <span type="button" class="timer-button" ng-click="main.startResetTimer()">{{ main.workButtonName }}</span> <br>
+<!--    <span type="button" class="timer-button" ng-click="main.startResetTimer()">{{ main.breakButtonName }}</span> <br>-->
 </div>
