@@ -1,4 +1,4 @@
-(function () {
+(function () { 
     function MainCtrl($interval) {
         console.log('Starting MainCtrl');
 
