@@ -18,8 +18,10 @@
         this.onBreak = false; // State of break.  False indicates not on break
         this.time = WORK_TIME; // The value of the timer.  This variable is used in the template directive
         this.buttonName = 'Start'; //Set the name of the button
-
-
+        var mySound = new buzz.sound( "assets/sounds/ding.mp3", { // Sound to play at the end of session
+            preload: true
+        });
+        
         // Public function.  Called by the buttons in main.html template
         // Starts the countdown timer and handles resetting the timer
         this.startResetTimer = function () {
@@ -30,7 +32,7 @@
                 setTimer();
             }
         };
-
+        
         // Starts the countdown clock
         // Private function
         // Initiated by the startResetTimer function's use of $interval
@@ -40,6 +42,7 @@
             console.log("countdown " + self.time);
 
             if (self.time <= 0) {
+                mySound.play(); //Play notification sound
                  // Increment Work Session count if not on break
                 if (!self.onBreak) {
                     completedWorkSessions += 1; // Increment if work session
@@ -70,6 +73,16 @@
                 self.time = WORK_TIME;
             }
         };
+        
+        test = function() {
+            console.log('ng-change from test()');
+        }
+        
+//        // Play ding sound when counter is 0
+//        $scope.$watch('self.time', function(newValue) {
+//            console.log('$watch: ' + newValue);
+//            console.log('$watch this.time: ' + self.time);
+//        });
 
     } // End of MainCtrl
 
