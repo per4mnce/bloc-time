@@ -12,16 +12,16 @@
         // Private variables
         var timer; //Countdown timer used in $interval 
         var completedWorkSessions = 0; // The number of completed work sessions.  Used to determine break length
-        var self = this; // This allows the inner function to gain access to 'this'
+        var self = this; // Allows the inner function to gain access to 'this'
 
         // Public variables
-        this.onBreak = false; // State of break.  False indicated not on break
+        this.onBreak = false; // State of break.  False indicates not on break
         this.time = WORK_TIME; // The value of the timer.  This variable is used in the template directive
         this.buttonName = 'Start'; //Set the name of the button
 
 
         // Public function.  Called by the buttons in main.html template
-        // This function starts and pauses the timer
+        // Starts the countdown timer and handles resetting the timer
         this.startResetTimer = function () {
             console.log('startResetTimer() started');
             if (self.buttonName === 'Start') {
