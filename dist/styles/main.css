@@ -21,33 +21,36 @@ html {
    max-width: 64rem;
  }
 
-
-.timer-digits {
-    font-size: 300%
-}
-
-.timer-button {
+.button {
+    margin-top: 5px;
     text-align: center;
     font-size: 14px;
     background-color: blue;
     color: white;
-    border:1px solid #566963;
+    border: 1px solid #566963;
     display: inline-block;
     width: 100px;
     height: 28px;
+    box-shadow: 2px 2px 1px rgba(50, 50, 50, 0.75);;
+    
  }
 
- .timer-button:hover {
+ .button:hover {
     cursor: pointer;
     color: red;
+    font-weight: bold;
  }
 
  .time-field{
-   width: 85%;
-   font-size: 35px;
+   width: 100%;
+   font-size: 40px;
  }
 
  .center{
    margin-top: 50px;
    margin-left: 50%;
  }
+
+#tasks {
+    margin-top: 15px;
+}

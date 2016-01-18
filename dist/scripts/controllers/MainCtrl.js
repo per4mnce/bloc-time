@@ -74,11 +74,18 @@
             }
         };
         
-        test = function() {
-            console.log('ng-change from test()');
+        // Add tasks to the task list
+        this.addTask = function() {
+            alert('addTask() from MainCtrl: ' + document.getElementById('taskInput').value);
+             var input =  document.getElementById('taskInput').value
+             document.getElementById("tasks").innerHTML = input;
+//            console.log('addTask started');
+//            var input = $('#taskInput').val();
+//            tasks.$add({taskName: input});
+//            $('#taskInput').val('');
         }
         
-//        // Play ding sound when counter is 0
+        // Play ding sound when counter is 0
 //        $scope.$watch('self.time', function(newValue) {
 //            console.log('$watch: ' + newValue);
 //            console.log('$watch this.time: ' + self.time);
