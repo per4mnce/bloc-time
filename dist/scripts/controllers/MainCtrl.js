@@ -2,49 +2,71 @@
     function MainCtrl($interval) {
         console.log('Starting MainCtrl');
 
-        // Initialize
+        // Initialize Variables
+
+        //Constants
         var WORK_TIME = 5; //Work session default time - 1500 (25 minutes)
         var SHORT_BREAK_TIME = 3; //Short break session default time - 300 (5 minutes)
         var LONG_BREAK_TIME = 10; //Long break session default time - 1800 (30 minutes)
-        var timer;
+
+        // Private variables
+        var timer; //Countdown timer used in $interval 
+        var completedWorkSessions = 0; // The number of completed work sessions.  Used to determine break length
         var self = this; // This allows the inner function to gain access to 'this'
 
-        this.onBreak = false;
-        this.time = WORK_TIME; // Initial timer setting
-        this.buttonName = 'Start'; //Set the name op the work button
+        // Public variables
+        this.onBreak = false; // State of break.  False indicated not on break
+        this.time = WORK_TIME; // The value of the timer.  This variable is used in the template directive
+        this.buttonName = 'Start'; //Set the name of the button
 
 
-        // Public function.  Called by button in main.html template
+        // Public function.  Called by the buttons in main.html template
+        // This function starts and pauses the timer
         this.startResetTimer = function () {
             console.log('startResetTimer() started');
             if (self.buttonName === 'Start') {
                 timer = $interval(countdown, 1000);
             } else {
-                //alert("Reset Button");
                 setTimer();
             }
         };
 
         // Starts the countdown clock
+        // Private function
+        // Initiated by the startResetTimer function's use of $interval
         var countdown = function () {
             self.time -= 1;
-            self.buttonName = "Reset";
+            self.buttonName = "Reset"; // Change the button to 'Reset'
             console.log("countdown " + self.time);
 
             if (self.time <= 0) {
-                $interval.cancel(timer); //Stop Timer
-                //self.onBreak ? setWork() : setBreak();
-                self.onBreak = !self.onBreak;  //Change from current break type to the other
+                 // Increment Work Session count if not on break
+                if (!self.onBreak) {
+                    completedWorkSessions += 1; // Increment if work session
+                    //alert('completedWorkSessions: ' + completedWorkSessions);
+                }
+                self.onBreak = !self.onBreak; // Swap break status
                 setTimer();
             }
         };
 
+        // Set the timer to appropriate duration
+        // Private function
         var setTimer = function () {
             $interval.cancel(timer); //Stop timer
+            
+            // Determine correct duration
+            // After 4 completed work sessions, the break duration is longer 
             self.buttonName = "Start";
             if (self.onBreak) {
-                self.time = SHORT_BREAK_TIME;
+                // Handle Break
+                if (completedWorkSessions % 4 === 0) {
+                    self.time = LONG_BREAK_TIME;
+                } else {
+                    self.time = SHORT_BREAK_TIME;
+                }
             } else {
+                // Handle Work Session
                 self.time = WORK_TIME;
             }
         };
