@@ -43,8 +43,10 @@
             $interval.cancel(timer); //Stop timer
             self.buttonName = "Start";
             if (self.onBreak) {
+                // Break
                 self.time = SHORT_BREAK_TIME;
             } else {
+                // Work Session
                 self.time = WORK_TIME;
             }
         };
