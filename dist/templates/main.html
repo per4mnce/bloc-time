@@ -9,13 +9,11 @@
         </form> 
     </div>
 
-    <div id='tasks'></div>    
+<!--    <div id='tasks'>{{ main.taskList }}</div>    -->
         
-<!--
-    <div id='tasks' ng-repeat="task in tasks">
-        <li> {{ task.taskName }}</li> <br>
+    <div id='tasks' ng-repeat="task in main.taskList">
+        <li> {{ task }}</li>
     </div>
--->
 
 </ul>
 

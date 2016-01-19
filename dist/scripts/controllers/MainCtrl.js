@@ -1,5 +1,5 @@
 (function () {
-    function MainCtrl($interval) {
+    function MainCtrl($interval, Tasks) {
         console.log('Starting MainCtrl');
 
         // Initialize Variables
@@ -13,14 +13,15 @@
         var timer; //Countdown timer used in $interval 
         var completedWorkSessions = 0; // The number of completed work sessions.  Used to determine break length
         var self = this; // Allows the inner function to gain access to 'this'
+        var mySound = new buzz.sound( "assets/sounds/ding.mp3", { // Sound to play at the end of session
+            preload: true
+        });
 
         // Public variables
         this.onBreak = false; // State of break.  False indicates not on break
         this.time = WORK_TIME; // The value of the timer.  This variable is used in the template directive
         this.buttonName = 'Start'; //Set the name of the button
-        var mySound = new buzz.sound( "assets/sounds/ding.mp3", { // Sound to play at the end of session
-            preload: true
-        });
+        this.taskList = undefined;
         
         // Public function.  Called by the buttons in main.html template
         // Starts the countdown timer and handles resetting the timer
@@ -76,9 +77,15 @@
         
         // Add tasks to the task list
         this.addTask = function() {
-            alert('addTask() from MainCtrl: ' + document.getElementById('taskInput').value);
-             var input =  document.getElementById('taskInput').value
-             document.getElementById("tasks").innerHTML = input;
+            var input =  document.getElementById('taskInput').value
+            alert('addTask() from MainCtrl: ' + input);
+            self.taskList = Tasks.getTasks();
+            if (input !== "") {self.taskList.unshift(input);};
+            console.log("self.taskList from mainCtrl this.addTask() " + self.taskList);
+            
+            
+//             var input =  document.getElementById('taskInput').value
+//             document.getElementById("tasks").innerHTML = input;
 //            console.log('addTask started');
 //            var input = $('#taskInput').val();
 //            tasks.$add({taskName: input});
@@ -96,5 +103,5 @@
 
     angular
         .module('blocTime')
-        .controller('MainCtrl', ['$interval', MainCtrl]);
+        .controller('MainCtrl', ['$interval', 'Tasks', MainCtrl]);
 })();
