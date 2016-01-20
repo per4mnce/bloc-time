@@ -1,22 +1,19 @@
 <ul>
-<!--    see https://www.firebase.com/docs/web/libraries/angular/quickstart.html#section-inject-services-->
   <h2>Task History</h2>
-    
     <div>
-        <form>
-            <input type="text" id="taskInput" ng-model="newTaskText" placeholder= "Enter task name"><br />
+        <form ng-submit="main.addTask()">
+            <input type="text" id="taskInput" ng-model="task.text" placeholder= "Enter task name"><br />
             <div type="submit" class="button" ng-click="main.addTask()">Add Task</>
         </form> 
     </div>
 
-<!--    <div id='tasks'>{{ main.taskList }}</div>    -->
-        
-    <div id='tasks' ng-repeat="task in main.taskList">
-        <li> {{ task }}</li>
+    <div id='tasks' ng-repeat="task in main.taskList | orderBy: '-date'">
+        <li> {{ task.name }}</li>
     </div>
 
 </ul>
 
+<!--Timer-->
 <div class="container center">
     <div class="time-field timer-digits"> {{ main.time | timecode}}</div>
     <span type="button" class="button" ng-show="!main.onBreak" ng-click="main.startResetTimer()">{{ main.buttonName + ' (work)' }}</span>

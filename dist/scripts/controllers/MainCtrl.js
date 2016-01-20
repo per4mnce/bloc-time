@@ -21,7 +21,7 @@
         this.onBreak = false; // State of break.  False indicates not on break
         this.time = WORK_TIME; // The value of the timer.  This variable is used in the template directive
         this.buttonName = 'Start'; //Set the name of the button
-        this.taskList = undefined;
+        this.taskList = Tasks.all(); // Get tasks from FireBase using the Tasks factory
         
         // Public function.  Called by the buttons in main.html template
         // Starts the countdown timer and handles resetting the timer
@@ -75,28 +75,19 @@
             }
         };
         
-        // Add tasks to the task list
+        // Add new task to the task list in Firebase
+        // Public function
         this.addTask = function() {
-            var input =  document.getElementById('taskInput').value
-            alert('addTask() from MainCtrl: ' + input);
-            self.taskList = Tasks.getTasks();
-            if (input !== "") {self.taskList.unshift(input);};
-            console.log("self.taskList from mainCtrl this.addTask() " + self.taskList);
+            var inputBox =  document.getElementById('taskInput')
             
-            
-//             var input =  document.getElementById('taskInput').value
-//             document.getElementById("tasks").innerHTML = input;
-//            console.log('addTask started');
-//            var input = $('#taskInput').val();
-//            tasks.$add({taskName: input});
-//            $('#taskInput').val('');
-        }
-        
-        // Play ding sound when counter is 0
-//        $scope.$watch('self.time', function(newValue) {
-//            console.log('$watch: ' + newValue);
-//            console.log('$watch this.time: ' + self.time);
-//        });
+            //Add task to the list unless it is empty
+            if (inputBox.value) {
+                Tasks.add(inputBox.value);
+                self.taskList = Tasks.all();
+                inputBox.value = "";  //Clear the contents of the inputBox
+                inputBox.focus();  // Put cursor in the inputBox
+            }
+        };
 
     } // End of MainCtrl
 
