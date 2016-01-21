@@ -1,3 +1,4 @@
+//Sets the timer to mm:ss format
 (function () {
     function timecode() {
         return function (seconds) {

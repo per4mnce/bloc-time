@@ -28,6 +28,7 @@
         this.startResetTimer = function () {
             console.log('startResetTimer() started');
             if (self.buttonName === 'Start') {
+                $interval.cancel(timer); //Stop timer
                 timer = $interval(countdown, 1000);
             } else {
                 setTimer();

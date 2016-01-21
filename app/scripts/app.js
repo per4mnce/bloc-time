@@ -1,3 +1,5 @@
+//Start of the program
+//Load the router
 (function () {
     function config($stateProvider, $locationProvider) {
         $locationProvider

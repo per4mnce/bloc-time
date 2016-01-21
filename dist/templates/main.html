@@ -7,16 +7,17 @@
                 <div type="submit" class="btn btn-primary pull-right" ng-click="main.addTask()">Add Task</div>
             </form> 
             <br /><br />
-
-
+            
+            <!-- Display data -->
             <ul>
-                <div id='tasks' ng-repeat="task in main.taskList | orderBy: '-date'">
-                    <li> {{ task.name }}</li>
-                </div>
+            <div id='tasks' ng-repeat="task in main.taskList | orderBy: '-date'">
+                <li> {{ task.name }} </li>
+            </div>
             </ul>
+            
         </div>
 
-        <!--Timer-->
+        <!-- Timer -->
         <div class="col-md-9 text-center vcenter">
             <div class="time-field timer-digits"> {{ main.time | timecode}}</div>
             <span type="button" class="btn btn-primary" ng-show="!main.onBreak" ng-click="main.startResetTimer()">{{ main.buttonName + ' (work)' }}</span>
