@@ -82,8 +82,7 @@
             
             //Add task to the list unless it is empty
             if (inputBox.value) {
-                Tasks.add(inputBox.value);
-                self.taskList = Tasks.all();
+                Tasks.add(inputBox.value); //Write to Firebase database via the Tasks factory
                 inputBox.value = "";  //Clear the contents of the inputBox
                 inputBox.focus();  // Put cursor in the inputBox
             }

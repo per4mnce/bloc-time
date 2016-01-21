@@ -14,7 +14,7 @@ app.factory('Tasks', ['$firebaseArray', function($firebaseArray) {
                 date: Firebase.ServerValue.TIMESTAMP
                 //completed: false
             });
-            return addTask;
+            //return addTask;
         },
         delete: function(task) {
             return tasks.$remove(task);
@@ -28,17 +28,28 @@ app.factory('Tasks', ['$firebaseArray', function($firebaseArray) {
 //(function() {
 //    console.log("Starting Tasks.js");
 //    function Tasks($firebaseArray) {
-//        var Tasks = {};
-//        var ref = new Firebase("https://sweltering-inferno-4511.firebaseio.com/");    
-//        
-//        var taskList =  $firebaseArray(ref);
-//        console.log(taskList);
-//        
-//        Tasks.getTasks = function(){
-//            return taskList;
-//        };
-//        
-//        return Tasks;
+//        var ref = new Firebase("https://sweltering-inferno-4511.firebaseio.com/tasks");
+//
+//        // download tasks into a synchronized array
+//        var tasks = $firebaseArray(ref);
+//
+//        return {
+//            add: function(task) {
+//                console.log("addTask from Task.js");
+//                var addTask = tasks.$add({
+//                    name: task,
+//                    date: Firebase.ServerValue.TIMESTAMP
+//                    //completed: false
+//                });
+//                return addTask;
+//            },
+//            delete: function(task) {
+//                return tasks.$remove(task);
+//            },
+//            all: function() {
+//                return tasks;
+//            }
+//        }
 //    }
 //
 //    angular

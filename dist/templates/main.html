@@ -1,21 +1,26 @@
-<ul>
-  <h2>Task History</h2>
-    <div>
-        <form ng-submit="main.addTask()">
-            <input type="text" id="taskInput" ng-model="task.text" placeholder= "Enter task name"><br />
-            <div type="submit" class="button" ng-click="main.addTask()">Add Task</>
-        </form> 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3" style="background-color: lightgray">
+            <h2>Task History</h2>
+            <form ng-submit="main.addTask()">
+                <input type="text" class="form-control" id="taskInput" placeholder= "Enter task name">
+                <div type="submit" class="btn btn-primary pull-right" ng-click="main.addTask()">Add Task</div>
+            </form> 
+            <br /><br />
+
+
+            <ul>
+                <div id='tasks' ng-repeat="task in main.taskList | orderBy: '-date'">
+                    <li> {{ task.name }}</li>
+                </div>
+            </ul>
+        </div>
+
+        <!--Timer-->
+        <div class="col-md-9 text-center vcenter">
+            <div class="time-field timer-digits"> {{ main.time | timecode}}</div>
+            <span type="button" class="btn btn-primary" ng-show="!main.onBreak" ng-click="main.startResetTimer()">{{ main.buttonName + ' (work)' }}</span>
+            <span type="button" class="btn btn-primary" ng-show="main.onBreak"  ng-click="main.startResetTimer()">{{ main.buttonName + ' (break)'}}</span>
+        </div>        
     </div>
-
-    <div id='tasks' ng-repeat="task in main.taskList | orderBy: '-date'">
-        <li> {{ task.name }}</li>
-    </div>
-
-</ul>
-
-<!--Timer-->
-<div class="container center">
-    <div class="time-field timer-digits"> {{ main.time | timecode}}</div>
-    <span type="button" class="button" ng-show="!main.onBreak" ng-click="main.startResetTimer()">{{ main.buttonName + ' (work)' }}</span>
-    <span type="button" class="button" ng-show="main.onBreak"  ng-click="main.startResetTimer()">{{ main.buttonName + ' (break)'}}</span>
 </div>
