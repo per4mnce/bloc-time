@@ -8,6 +8,7 @@ Countdown timer, task history, completion time sound
 ## Technology Focus:
 AngularJS, Firebase
 
+## User Interface:
 ![Screen View](https://static.wixstatic.com/media/045a70_77d15f8433cf483f9c54418b2cca210d.jpg/v1/fill/w_1197,h_389,al_c,q_90/045a70_77d15f8433cf483f9c54418b2cca210d.jpg)
 
 ## Configuration
