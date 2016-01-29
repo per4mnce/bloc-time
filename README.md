@@ -1,17 +1,17 @@
-## Henry's Bloc Frontend Project Starter
+# BLOC-TIME
 
-A starter application for student projects in Bloc's [Frontend Web Development Course](https://www.bloc.io/frontend-development-bootcamp).
+A time-management system based on the [Pomodoro technique](http://pomodorotechnique.com/)
+ 
+## Features:
+Countdown timer, task history, completion time sound
+ 
+## Technology Focus:
+AngularJS, Firebase
+
+![Screen View](https://static.wixstatic.com/media/045a70_77d15f8433cf483f9c54418b2cca210d.jpg/v1/fill/w_1197,h_389,al_c,q_90/045a70_77d15f8433cf483f9c54418b2cca210d.jpg)
 
 ## Configuration
-
-Start by cloning the repository:
-
-```
-$ git clone https://github.com/Bloc/bloc-frontend-project-starter.git <your-frontend-project-name>
-```
-
-The project uses Grunt to run tasks in development. Thoroughly review our [resource on using Grunt](https://www.bloc.io/resources/using-grunt) before using this application. It may also help to review [our resource on NPM and `package.json` files](https://www.bloc.io/resources/npm-and-package-json).
-
+The project uses Grunt to run tasks in development.
 Install the project dependencies by running:
 
 ```
